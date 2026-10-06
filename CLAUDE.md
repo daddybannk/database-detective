@@ -13,6 +13,7 @@ Sources/             our generators and artwork sources, one folder per case
 Where Are You/       a finished case folder, ready to copy into the game
 One Dollar/          the same, for the second case
 Top of the Class/    the same, for the third case
+School Speed Limit/  the same, for the fourth case
 ```
 
 A case is two folders with the same name: `Sources/<case>/` holds the generator, the `build.sh` and the `.svg` sources; `<case>/` at the top level holds only what ships — `config.json`, the database, the PNGs and a `README.md` recording the solution. Both build steps in `Sources/<case>/` write across into `<case>/`.
@@ -37,6 +38,9 @@ python3 "Sources/One Dollar/one_dollar.py" # the same pair for the second case
 
 python3 "Sources/Top of the Class/top_of_the_class.py" # and for the third
 "Sources/Top of the Class/build.sh"
+
+python3 "Sources/School Speed Limit/school_speed_limit.py" # and for the fourth
+"Sources/School Speed Limit/build.sh"
 
 python3 dbd-workshop/Scripts/halloween.py  # upstream's example generator; writes into the cwd
 ```
@@ -76,7 +80,14 @@ The important thing to understand before editing a generator is that **the puzzl
 
 Note that the story has to match the data: the registers are $76 **over** overall, because the overpayers more than cover the missing dollar, which is why the evidence is a per-member exception report and not a till reconciliation. Check any figure quoted on evidence artwork against the database before shipping it.
 
-`Sources/Top of the Class/top_of_the_class.py` is the smallest of the three: one forged grade among 450, found by testing each recorded grade against the band its exam score belongs in. Its single trap is the band boundary — twelve scores sit exactly on 80, 70, 60 and 50 and are graded correctly, so `>` instead of `>=` accuses thirteen students, and a `CASE` that forgets the D band accuses 51. `honest_score()` keeps the random scores off those four cut-offs, which is what fixes that count at twelve and lets the evidence artwork quote it.
+`Sources/Top of the Class/top_of_the_class.py` is the smallest of the four: one forged grade among 450, found by testing each recorded grade against the band its exam score belongs in. Its single trap is the band boundary — twelve scores sit exactly on 80, 70, 60 and 50 and are graded correctly, so `>` instead of `>=` accuses thirteen students, and a `CASE` that forgets the D band accuses 51. `honest_score()` keeps the random scores off those four cut-offs, which is what fixes that count at twelve and lets the evidence artwork quote it.
+
+`Sources/School Speed Limit/school_speed_limit.py` is the one case with a trap pointing each way, which is the whole of its difficulty: eight vehicles pass at exactly the 40 km/h zone limit so `speed >= 40` accuses nine drivers, while the culprit crosses the camera at `1500` — the restricted window's own edge — so `time > 1500` accuses nobody at all. A player has to be strict about the speed and inclusive about the time in the same `WHERE` clause. Two more counts punish getting the windows wrong: merging `600-800` and `1500-1700` into one span accuses 18, and rounding the edges outwards accuses 6.
+
+Two things in it are worth copying into any case that stores a time:
+
+- **Times are HHMM in an `INTEGER` column** (`1500` is 15:00, `801` is 08:01), and `random_time()` rejects any draw whose minute half reaches 60, because `760` is not a clock time. `verify()` asserts the same thing against the finished table. Minutes-from-midnight would also work, but HHMM is what a player reads off the evidence without converting.
+- **`compliant_speed()` keeps every random pass below the limit**, so each wrong query's suspect count is fixed by construction rather than by the draw, and `verify()` can assert the exact number instead of just "more than one". The one count that falls out of the seeded draw instead — passes inside the windows — is pinned to a constant anyway, so a rebuild that moves it fails rather than quietly making the artwork lie.
 
 Three habits in these generators worth keeping in any new one:
 

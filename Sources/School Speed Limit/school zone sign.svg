@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="800" viewBox="0 0 560 800">
+  <rect width="560" height="800" fill="#d8dbe0"/>
+
+  <!-- the sign plate itself, fluorescent yellow-green as school zone signs are -->
+  <rect x="40" y="40" width="480" height="620" rx="14" fill="#cfe03a"
+        stroke="#1a1a1a" stroke-width="7"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" fill="#1a1a1a" text-anchor="middle"
+     font-weight="bold">
+    <text x="280" y="112" font-size="58">SCHOOL</text>
+    <text x="280" y="172" font-size="58">ZONE</text>
+  </g>
+
+  <!-- two children crossing -->
+  <g stroke="#1a1a1a" stroke-width="11" stroke-linecap="round" fill="none">
+    <circle cx="236" cy="214" r="16" fill="#1a1a1a" stroke="none"/>
+    <path d="M236,232 L236,272"/>
+    <path d="M236,272 L218,304"/><path d="M236,272 L256,304"/>
+    <path d="M236,244 L212,260"/><path d="M236,244 L264,254"/>
+
+    <circle cx="322" cy="232" r="13" fill="#1a1a1a" stroke="none"/>
+    <path d="M322,247 L322,280" stroke-width="9"/>
+    <path d="M322,280 L308,304" stroke-width="9"/><path d="M322,280 L338,304" stroke-width="9"/>
+    <path d="M322,256 L302,268" stroke-width="9"/><path d="M322,256 L344,264" stroke-width="9"/>
+  </g>
+
+  <!-- the limit roundel -->
+  <circle cx="280" cy="400" r="96" fill="#ffffff" stroke="#8d2b22" stroke-width="22"/>
+  <!-- sans for the figures: Georgia sets numerals as old-style, so its 40 reads
+       as "4o" at sign size -->
+  <text x="280" y="440" font-family="Helvetica, Arial, sans-serif" font-size="100"
+        font-weight="bold" fill="#1a1a1a" text-anchor="middle">40</text>
+  <text x="280" y="534" font-family="Helvetica, Arial, sans-serif" font-size="32"
+        font-weight="bold" fill="#1a1a1a" text-anchor="middle">KM/H</text>
+
+  <!-- the two windows the limit applies in -->
+  <rect x="76" y="552" width="408" height="92" fill="#1a1a1a"/>
+  <g font-family="'Courier New', Courier, monospace" font-size="32" font-weight="bold"
+     fill="#cfe03a" text-anchor="middle">
+    <text x="280" y="588">06:00 - 08:00</text>
+    <text x="280" y="630">15:00 - 17:00</text>
+  </g>
+
+  <!-- and what applies the rest of the day -->
+  <rect x="40" y="674" width="480" height="66" rx="8" fill="#ffffff"
+        stroke="#1a1a1a" stroke-width="5"/>
+  <text x="280" y="716" font-family="Helvetica, Arial, sans-serif" font-size="25"
+        font-weight="bold" fill="#1a1a1a" text-anchor="middle">AT ALL OTHER TIMES &#160;60 KM/H</text>
+
+  <text x="280" y="778" font-family="Georgia, 'Times New Roman', serif" font-size="23"
+        fill="#3a3d43" text-anchor="middle">LINDENHALL PRIMARY &#183; HOLLOWAY ROAD</text>
+</svg>

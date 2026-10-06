@@ -1,0 +1,32 @@
+{
+    "name": "School Speed Limit",
+    "author": "daddybannk",
+    "difficulty": "Easy",
+    "concepts": [
+        "JOIN",
+        "WHERE",
+        "AND",
+        "OR"
+    ],
+    "database": "school_zone",
+    "lockedTables": [
+        "drivers",
+        "vehicles",
+        "camera_log"
+    ],
+    "evidenceFiles": [
+        "school zone sign.png",
+        "camera report.png"
+    ],
+    "previewImage": "police report 1x1.png",
+    "culpritName": "Delphine Crowhurst",
+    "queryHints": [
+        "Join camera_log to vehicles on\nthe plate, then to drivers.",
+        "Two windows, so two time ranges\njoined with OR.",
+        "Over the limit means speed > 40,\nnot 40 itself."
+    ],
+    "caseHints": [
+        "06:00-08:00 and 15:00-17:00,\nmax 40 km/h. Times are HHMM.",
+        "Both windows include their own\nend times."
+    ]
+}

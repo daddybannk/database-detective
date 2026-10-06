@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <rect width="1000" height="1000" fill="#ffffff"/>
+  <rect x="34" y="34" width="932" height="932" fill="none" stroke="#1a1a1a" stroke-width="6"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" fill="#1a1a1a" text-anchor="middle">
+    <text x="500" y="202" font-size="94" font-weight="bold">SCHOOL SPEED</text>
+    <text x="500" y="306" font-size="94" font-weight="bold">LIMIT</text>
+  </g>
+  <line x1="170" y1="348" x2="830" y2="348" stroke="#8d2b22" stroke-width="5"/>
+  <text x="500" y="394" font-family="Georgia, serif" font-size="29" fill="#8d2b22"
+        text-anchor="middle">FORTY KILOMETRES, TWICE A DAY</text>
+
+  <!-- the limit itself, the way it stands on the street -->
+  <circle cx="500" cy="675" r="200" fill="#ffffff" stroke="#8d2b22" stroke-width="44"/>
+  <!-- Nothing but the number inside the ring, the way a real limit sign reads.
+       Sans for the figures: Georgia sets numerals as old-style, so its 40 would
+       read as "4o" at sign size. -->
+  <text x="500" y="761" font-family="Helvetica, Arial, sans-serif" font-size="240"
+        font-weight="bold" fill="#1a1a1a" text-anchor="middle">40</text>
+</svg>
