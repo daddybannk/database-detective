@@ -11,7 +11,10 @@ CLAUDE.md
 dbd-workshop/        git submodule -> github.com/BoyNamedHsu/dbd-workshop (upstream's authoring kit)
 Sources/             our generators and artwork sources, one folder per case
 Where Are You/       a finished case folder, ready to copy into the game
+One Dollar/          the same, for the second case
 ```
+
+A case is two folders with the same name: `Sources/<case>/` holds the generator, the `build.sh` and the `.svg` sources; `<case>/` at the top level holds only what ships — `config.json`, the database, the PNGs and a `README.md` recording the solution. Both build steps in `Sources/<case>/` write across into `<case>/`.
 
 **`dbd-workshop/` is a submodule and stays pristine.** It is upstream's kit — the format documentation (`README.md`, `Example Case/README.md`), the `Example Case/` reference case, PSD art templates, and the shared Python helpers in `Scripts/`. Read it, import from it, never write into it: anything added there is untracked by both repos and is destroyed the next time the submodule is re-cloned. Our code reaches across the boundary instead (see `Sources/Where Are You/where.py`, which puts `dbd-workshop/Scripts` on `sys.path` to import `db_utils`).
 
@@ -27,6 +30,9 @@ git submodule update --init         # a fresh clone leaves dbd-workshop/ empty,
 
 python3 "Sources/Where Are You/where.py"   # rebuild the case database, straight into "Where Are You/"
 "Sources/Where Are You/build.sh"           # re-render the SVG artwork, straight into "Where Are You/"
+
+python3 "Sources/One Dollar/one_dollar.py" # the same pair for the second case
+"Sources/One Dollar/build.sh"
 
 python3 dbd-workshop/Scripts/halloween.py  # upstream's example generator; writes into the cwd
 ```
@@ -58,9 +64,17 @@ The important thing to understand before editing a generator is that **the puzzl
 - Random houses are kept off the `3%13` pattern by `matches_plate()`, which is what makes the five description matches exact.
 - Rows are sorted by house number before insert so the culprit is not conspicuously first.
 
-Two habits in `where.py` worth keeping in any new generator:
+`Sources/One Dollar/one_dollar.py` does the same job with aggregates instead of filters, and shows two more things worth copying:
 
-- `verify()` runs at the end of generation and raises unless all of the above still holds. It checks against the same `CLUES` list the data is built from, so the checks cannot drift from the puzzle. Changing any count or colour and re-running is therefore safe — the script refuses to leave an unsolvable case behind.
+- **Money is whole dollars in an `INTEGER` column, and no case should use fractions.** The game does not render decimals, and `REAL` columns would hand the puzzle to floating point error: measured on this data stored as dollars-and-cents, the intended `basket - paid = 0.01` matched *nobody*, and `basket > paid` accused 32 members who had paid exactly right. `ROUND(..., 2)` rescues the first query but not the second.
+- The three traps are the same idea as the other case's decoys, aimed at aggregation instead: repeat purchases are separate rows so `SUM(DISTINCT price)` silently undercounts the culprit out of the result; 25 members have no rows in either `purchases` or `payments`; and 18 overpayers — one of them by exactly a dollar — mean `<>` returns 19 rows and `ABS(...) = 1` returns 2.
+
+Note that the story has to match the data: the registers are $76 **over** overall, because the overpayers more than cover the missing dollar, which is why the evidence is a per-member exception report and not a till reconciliation. Check any figure quoted on evidence artwork against the database before shipping it.
+
+Three habits in these generators worth keeping in any new one:
+
+- `one_dollar.py` seeds its RNG from a constant, so a rebuild reproduces the shipped database byte for byte. Without that, every rebuild invalidates whatever figures the artwork and README quote. `where.py` does not seed, so its docs only quote values that are fixed by construction.
+- `verify()` runs at the end of generation and raises unless all of the above still holds. It checks against the same clue list the data is built from, so the checks cannot drift from the puzzle. Changing any count or colour and re-running is therefore safe — the script refuses to leave an unsolvable case behind.
 - `main()` unlinks the database file first. `CREATE TABLE IF NOT EXISTS` plus `INSERT` means a second run against an existing file silently appends duplicate rows; upstream's `halloween.py` still has that trap.
 
 Each case folder's own `README.md` carries the intended solution query and the invariants that keep it the only answer — read `Where Are You/README.md` before changing that case's data, rather than re-deriving the puzzle from the generator.

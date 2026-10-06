@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <rect width="1000" height="1000" fill="#ffffff"/>
+  <rect x="34" y="34" width="932" height="932" fill="none" stroke="#1a1a1a" stroke-width="6"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" fill="#1a1a1a" text-anchor="middle">
+    <text x="500" y="226" font-size="104" font-weight="bold">ONE</text>
+    <text x="500" y="332" font-size="104" font-weight="bold">DOLLAR</text>
+  </g>
+  <line x1="170" y1="374" x2="830" y2="374" stroke="#8d2b22" stroke-width="5"/>
+  <text x="500" y="420" font-family="Georgia, serif" font-size="29" fill="#8d2b22"
+        text-anchor="middle">PAID LESS THAN THEY TOOK</text>
+
+  <!-- the till roll from the evidence, torn off at the bottom -->
+  <g transform="translate(500,470)">
+    <path d="M-150,0 L150,0 L150,352 L128,364 L106,352 L84,364 L62,352 L40,364 L18,352
+             L-4,364 L-26,352 L-48,364 L-70,352 L-92,364 L-114,352 L-136,364 L-150,357 Z"
+          fill="#ffffff" stroke="#8c8880" stroke-width="5"/>
+    <g fill="#1a1a1a">
+      <rect x="-104" y="44" width="208" height="9"/>
+      <rect x="-104" y="92" width="150" height="7"/><rect x="62" y="92" width="42" height="7"/>
+      <rect x="-104" y="124" width="132" height="7"/><rect x="62" y="124" width="42" height="7"/>
+      <rect x="-104" y="156" width="162" height="7"/><rect x="62" y="156" width="42" height="7"/>
+      <rect x="-104" y="196" width="208" height="5"/>
+    </g>
+    <text x="0" y="276" text-anchor="middle" font-family="'Courier New', monospace"
+          font-size="62" font-weight="bold" fill="#8d2b22">-$1</text>
+  </g>
+</svg>

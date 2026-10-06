@@ -1,0 +1,20 @@
+{
+	"name": "One Dollar",
+	"author": "daddybannk",
+	"difficulty": "Easy",
+	"concepts": ["GROUP BY", "HAVING", "JOIN"],
+	"database": "supermarket",
+	"lockedTables": ["members", "products", "purchases", "payments"],
+	"evidenceFiles": ["exception report.png", "store notice.png"],
+	"previewImage": "police report 1x1.png",
+	"culpritName": "Buck Mulgrew",
+	"queryHints": [
+		"Join purchases to products to\nprice each basket.",
+		"GROUP BY the member, then SUM\nthe prices.",
+		"Compare that total to payments.\nHAVING filters on the total."
+	],
+	"caseHints": [
+		"Eighteen members paid too much.\nOnly one paid too little.",
+		"Members who never shopped have\nno rows at all."
+	]
+}

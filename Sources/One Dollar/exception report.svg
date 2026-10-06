@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="900" viewBox="0 0 520 900">
+  <rect width="520" height="900" fill="#ffffff"/>
+
+  <!-- the till roll, torn off at both ends -->
+  <path d="M60,46 L80,36 L100,46 L120,36 L140,46 L160,36 L180,46 L200,36 L220,46 L240,36
+           L260,46 L280,36 L300,46 L320,36 L340,46 L360,36 L380,46 L400,36 L420,46 L440,36 L460,46
+           L460,854 L440,864 L420,854 L400,864 L380,854 L360,864 L340,854 L320,864 L300,854
+           L280,864 L260,854 L240,864 L220,854 L200,864 L180,854 L160,864 L140,854 L120,864
+           L100,854 L80,864 L60,854 Z"
+        fill="#ffffff" stroke="#b9b5ad" stroke-width="2"/>
+
+  <g xml:space="preserve" font-family="'Courier New', Courier, monospace" font-size="19" fill="#1a1a1a">
+    <text x="123" y="112">       ZORA MART</text>
+    <text x="123" y="140">     LOS ZORANGELES</text>
+    <text x="123" y="168">========================</text>
+    <text x="123" y="196" font-weight="bold"> END OF DAY EXCEPTIONS</text>
+    <text x="123" y="224">========================</text>
+
+    <text x="123" y="280"> MEMBERS SERVED      195</text>
+    <text x="123" y="308"> ITEMS SCANNED      1571</text>
+    <text x="123" y="336"> MEMBERS ABSENT       25</text>
+
+    <text x="123" y="392">------------------------</text>
+    <text x="123" y="420"> MISMATCHED PAYMENTS  19</text>
+    <text x="123" y="448">   PAID OVER          18</text>
+    <text x="123" y="476">   PAID UNDER          1</text>
+    <text x="123" y="504">------------------------</text>
+
+    <text x="123" y="560" font-weight="bold"> SHORTFALL            $1</text>
+
+    <text x="123" y="624">  ONE MEMBER PAID LESS</text>
+    <text x="123" y="652"> THAN THEY CARRIED OUT</text>
+
+    <text x="123" y="716">------------------------</text>
+    <text x="123" y="744"> REGISTER 3  CLOSE 21:04</text>
+  </g>
+
+  <!-- barcode, for the look of the thing -->
+  <g fill="#1a1a1a">
+    <rect x="140" y="780" width="4" height="46"/><rect x="150" y="780" width="2" height="46"/>
+    <rect x="158" y="780" width="6" height="46"/><rect x="170" y="780" width="2" height="46"/>
+    <rect x="178" y="780" width="4" height="46"/><rect x="188" y="780" width="6" height="46"/>
+    <rect x="200" y="780" width="2" height="46"/><rect x="208" y="780" width="4" height="46"/>
+    <rect x="218" y="780" width="2" height="46"/><rect x="226" y="780" width="6" height="46"/>
+    <rect x="238" y="780" width="4" height="46"/><rect x="248" y="780" width="2" height="46"/>
+    <rect x="256" y="780" width="6" height="46"/><rect x="268" y="780" width="4" height="46"/>
+    <rect x="278" y="780" width="2" height="46"/><rect x="286" y="780" width="6" height="46"/>
+    <rect x="298" y="780" width="4" height="46"/><rect x="308" y="780" width="2" height="46"/>
+    <rect x="316" y="780" width="6" height="46"/><rect x="328" y="780" width="4" height="46"/>
+    <rect x="338" y="780" width="2" height="46"/><rect x="346" y="780" width="6" height="46"/>
+    <rect x="358" y="780" width="4" height="46"/><rect x="368" y="780" width="2" height="46"/>
+  </g>
+</svg>

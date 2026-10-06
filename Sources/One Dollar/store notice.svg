@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="520" viewBox="0 0 760 520">
+  <rect width="760" height="520" fill="#ffffff"/>
+  <rect x="26" y="26" width="708" height="468" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="34" y="34" width="692" height="452" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="380" y="100" font-size="28" font-weight="bold" fill="#1a1a1a">ZORA MART</text>
+    <text x="380" y="130" font-size="16" fill="#5c574c">NOTE TO THE CUSTOM CRIMES DIVISION</text>
+  </g>
+  <line x1="90" y1="156" x2="670" y2="156" stroke="#1a1a1a" stroke-width="2"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1a1a1a">
+    <text x="90" y="204">Every item scanned is one line, so a member who took two</text>
+    <text x="90" y="232">of the same thing appears on two lines.</text>
+    <text x="90" y="284">Twenty-five members did not shop today: no lines, no payment.</text>
+    <text x="90" y="312">Eighteen rounded up and let us keep the change. One did not.</text>
+    <text x="90" y="364" font-weight="bold">Find the member whose basket costs a dollar more than they paid.</text>
+  </g>
+
+  <text x="90" y="438" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#5c574c">
+    Store Manager
+  </text>
+  <g transform="translate(548,406) rotate(-9)">
+    <rect x="0" y="0" width="128" height="46" rx="5" fill="none" stroke="#8d2b22" stroke-width="3" opacity="0.8"/>
+    <text x="64" y="31" text-anchor="middle" font-family="'Courier New', monospace" font-size="17"
+          font-weight="bold" fill="#8d2b22" opacity="0.85">&#36;1 SHORT</text>
+  </g>
+</svg>
