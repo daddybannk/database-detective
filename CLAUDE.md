@@ -12,6 +12,7 @@ dbd-workshop/        git submodule -> github.com/BoyNamedHsu/dbd-workshop (upstr
 Sources/             our generators and artwork sources, one folder per case
 Where Are You/       a finished case folder, ready to copy into the game
 One Dollar/          the same, for the second case
+Top of the Class/    the same, for the third case
 ```
 
 A case is two folders with the same name: `Sources/<case>/` holds the generator, the `build.sh` and the `.svg` sources; `<case>/` at the top level holds only what ships — `config.json`, the database, the PNGs and a `README.md` recording the solution. Both build steps in `Sources/<case>/` write across into `<case>/`.
@@ -34,6 +35,9 @@ python3 "Sources/Where Are You/where.py"   # rebuild the case database, straight
 python3 "Sources/One Dollar/one_dollar.py" # the same pair for the second case
 "Sources/One Dollar/build.sh"
 
+python3 "Sources/Top of the Class/top_of_the_class.py" # and for the third
+"Sources/Top of the Class/build.sh"
+
 python3 dbd-workshop/Scripts/halloween.py  # upstream's example generator; writes into the cwd
 ```
 
@@ -49,6 +53,7 @@ To test a case, copy its folder into the game's data directory (`~/Library/Appli
 - Evidence images: max 1000x1000, max 8 entries. `previewImage` and `arrestWarrant` are **not** bound by that limit — the example case ships them at 2188x2188 and 2550x2188.
 - `queryHints` and `caseHints` do not wrap. Insert literal `\n` to break lines, around 35 characters each.
 - `lockedTables` should list every table the puzzle needs; otherwise players can drop them.
+- **The in-game SQL console has no `CASE` expression.** A case has to be solvable with `WHERE`, `AND` and `OR` alone, so a banded comparison is written out one band per branch — see `mismatch_condition()` in `Sources/Top of the Class/top_of_the_class.py`, which builds that string from the scale so `verify()` tests the query a player actually types.
 
 ## How the database generators work
 
@@ -70,6 +75,8 @@ The important thing to understand before editing a generator is that **the puzzl
 - The three traps are the same idea as the other case's decoys, aimed at aggregation instead: repeat purchases are separate rows so `SUM(DISTINCT price)` silently undercounts the culprit out of the result; 25 members have no rows in either `purchases` or `payments`; and 18 overpayers — one of them by exactly a dollar — mean `<>` returns 19 rows and `ABS(...) = 1` returns 2.
 
 Note that the story has to match the data: the registers are $76 **over** overall, because the overpayers more than cover the missing dollar, which is why the evidence is a per-member exception report and not a till reconciliation. Check any figure quoted on evidence artwork against the database before shipping it.
+
+`Sources/Top of the Class/top_of_the_class.py` is the smallest of the three: one forged grade among 450, found by testing each recorded grade against the band its exam score belongs in. Its single trap is the band boundary — twelve scores sit exactly on 80, 70, 60 and 50 and are graded correctly, so `>` instead of `>=` accuses thirteen students, and a `CASE` that forgets the D band accuses 51. `honest_score()` keeps the random scores off those four cut-offs, which is what fixes that count at twelve and lets the evidence artwork quote it.
 
 Three habits in these generators worth keeping in any new one:
 

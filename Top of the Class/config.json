@@ -1,0 +1,31 @@
+{
+    "name": "Top of the Class",
+    "author": "daddybannk",
+    "difficulty": "Easy",
+    "concepts": [
+        "JOIN",
+        "WHERE",
+        "OR"
+    ],
+    "database": "university",
+    "lockedTables": [
+        "students",
+        "courses",
+        "exam_scores",
+        "transcripts"
+    ],
+    "evidenceFiles": [
+        "registrar notice.png",
+        "security camera.png"
+    ],
+    "previewImage": "police report 1x1.png",
+    "culpritName": "Royce Danbury",
+    "queryHints": [
+        "Join transcripts to exam_scores\non student and course.",
+        "Write the scale out, one band\nper grade, joined with OR.",
+        "A grade is wrong when its score\nfalls outside that grade's band."
+    ],
+    "caseHints": [
+        "80+ is an A, 70+ a B, 60+ a C,\n50+ a D, below 50 an F."
+    ]
+}

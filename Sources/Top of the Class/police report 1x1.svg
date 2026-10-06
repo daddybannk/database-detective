@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+  <rect width="1000" height="1000" fill="#ffffff"/>
+  <rect x="34" y="34" width="932" height="932" fill="none" stroke="#1a1a1a" stroke-width="6"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" fill="#1a1a1a" text-anchor="middle">
+    <text x="500" y="226" font-size="98" font-weight="bold">TOP OF THE</text>
+    <text x="500" y="332" font-size="98" font-weight="bold">CLASS</text>
+  </g>
+  <line x1="170" y1="374" x2="830" y2="374" stroke="#8d2b22" stroke-width="5"/>
+  <text x="500" y="420" font-family="Georgia, serif" font-size="29" fill="#8d2b22"
+        text-anchor="middle">A GRADE THE SCORE DENIES</text>
+
+  <!-- the transcript, with the altered line ringed -->
+  <g transform="translate(500,462)">
+    <rect x="-176" y="0" width="352" height="344" fill="#ffffff" stroke="#8c8880" stroke-width="5"/>
+    <g fill="#1a1a1a">
+      <rect x="-134" y="38" width="190" height="9"/>
+      <rect x="-134" y="88" width="140" height="7"/><rect x="92" y="88" width="30" height="7"/>
+      <rect x="-134" y="128" width="116" height="7"/><rect x="92" y="128" width="30" height="7"/>
+      <rect x="-134" y="208" width="150" height="7"/><rect x="92" y="208" width="30" height="7"/>
+    </g>
+    <g fill="#8d2b22">
+      <rect x="-134" y="168" width="128" height="7"/><rect x="92" y="168" width="30" height="7"/>
+    </g>
+    <ellipse cx="107" cy="171" rx="40" ry="26" fill="none" stroke="#8d2b22" stroke-width="5"/>
+    <text x="0" y="326" text-anchor="middle" font-family="'Courier New', monospace"
+          font-size="124" font-weight="bold" fill="#8d2b22">A+</text>
+  </g>
+</svg>
