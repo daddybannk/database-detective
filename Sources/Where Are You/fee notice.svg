@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="510" viewBox="0 0 760 510">
+  <rect width="760" height="510" fill="#f3efe3"/>
+  <rect x="26" y="26" width="708" height="458" fill="none" stroke="#2b2a26" stroke-width="3"/>
+  <rect x="34" y="34" width="692" height="442" fill="none" stroke="#2b2a26" stroke-width="1"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="380" y="108" font-size="30" font-weight="bold" fill="#8d2b22">FINAL NOTICE</text>
+    <text x="380" y="138" font-size="17" fill="#1d1c19">ANNUAL MAINTENANCE FEE</text>
+  </g>
+
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1d1c19">
+    <text x="90" y="198">Properties in the estate</text><text x="670" y="198" text-anchor="end" font-weight="bold">300</text>
+    <text x="90" y="232">Payments received</text><text x="670" y="232" text-anchor="end" font-weight="bold">268</text>
+    <text x="90" y="266">Still owing</text><text x="670" y="266" text-anchor="end" font-weight="bold">32</text>
+  </g>
+  <line x1="90" y1="292" x2="670" y2="292" stroke="#9a948a" stroke-width="1"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1d1c19">
+    <text x="90" y="332">32 households still owe. Only one ignores every letter.</text>
+    <text x="90" y="360" font-weight="bold">Match the photograph against households.</text>
+  </g>
+
+  <text x="90" y="420" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#5c574c">
+    Estate Manager
+  </text>
+  <g transform="translate(556,388) rotate(-9)">
+    <rect x="0" y="0" width="118" height="46" rx="5" fill="none" stroke="#8d2b22" stroke-width="3" opacity="0.8"/>
+    <text x="59" y="31" text-anchor="middle" font-family="'Courier New', monospace" font-size="18"
+          font-weight="bold" fill="#8d2b22" opacity="0.85">UNPAID</text>
+  </g>
+</svg>

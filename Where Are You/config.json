@@ -1,0 +1,21 @@
+{
+	"name": "Where Are You?",
+	"author": "daddybannk",
+	"difficulty": "Easy",
+	"concepts": ["JOIN", "WHERE", "LIKE"],
+	"database": "where_are_you",
+	"lockedTables": ["households", "fee_payments"],
+	"evidenceFiles": ["house photo.png", "fee notice.png"],
+	"previewImage": "police report 1x1.png",
+	"culpritName": "Dodge Hollings",
+	"queryHints": [
+		"Narrow down households with WHERE.",
+		"The plate is torn, so match it\nwith LIKE and a % wildcard.",
+		"'3%13' starts with 3 and ends\nwith 13. '3%13%' does not.",
+		"Still more than one house? The\nculprit has no row in fee_payments."
+	],
+	"caseHints": [
+		"The photograph holds six clues.\nUse every one of them.",
+		"Four houses look identical.\nOnly the ledger separates them."
+	]
+}
