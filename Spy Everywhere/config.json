@@ -1,0 +1,20 @@
+{
+	"name": "Spy Everywhere",
+	"author": "daddybannk",
+	"difficulty": "Medium",
+	"concepts": ["GROUP BY", "HAVING", "COUNT", "DISTINCT", "JOIN"],
+	"database": "clubhouse",
+	"lockedTables": ["members", "activities", "signups"],
+	"evidenceFiles": ["hall notice.png", "activity board.png"],
+	"previewImage": "police report 1x1.png",
+	"culpritName": "James Bond",
+	"queryHints": [
+		"JOIN signups to members and\nGROUP BY the member.",
+		"Count the groups each member\nsigned up for, not the sheets.",
+		"A renewed group files a second\nsheet. Count them DISTINCT."
+	],
+	"caseHints": [
+		"Two groups meet every evening.\nNobody can attend all ten.",
+		"Ten members reached nine groups.\nOnly one reached all ten."
+	]
+}

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <rect width="1000" height="1000" fill="#ffffff"/>
+  <rect x="40" y="40" width="920" height="920" fill="none" stroke="#2b2b2b" stroke-width="8"/>
+
+  <text x="500" y="196" font-family="Georgia, serif" font-size="96" font-weight="bold"
+        fill="#1a1a1a" text-anchor="middle">SPY</text>
+  <text x="500" y="310" font-family="Georgia, serif" font-size="96" font-weight="bold"
+        fill="#1a1a1a" text-anchor="middle">EVERYWHERE</text>
+  <line x1="220" y1="360" x2="780" y2="360" stroke="#8d2b22" stroke-width="10"/>
+
+  <!-- Five evenings, two groups on each. One member ticked every box, which is
+       more evenings than a week has. -->
+  <g font-family="Georgia, serif" font-size="36" letter-spacing="3" fill="#4a4a4a"
+     text-anchor="middle">
+    <text x="160" y="515">MON</text>
+    <text x="330" y="515">TUE</text>
+    <text x="500" y="515">WED</text>
+    <text x="670" y="515">THU</text>
+    <text x="840" y="515">FRI</text>
+  </g>
+  <g fill="none" stroke="#2b2b2b" stroke-width="5">
+    <rect x="100" y="560" width="120" height="120" rx="15"/>
+    <rect x="270" y="560" width="120" height="120" rx="15"/>
+    <rect x="440" y="560" width="120" height="120" rx="15"/>
+    <rect x="610" y="560" width="120" height="120" rx="15"/>
+    <rect x="780" y="560" width="120" height="120" rx="15"/>
+    <rect x="100" y="710" width="120" height="120" rx="15"/>
+    <rect x="270" y="710" width="120" height="120" rx="15"/>
+    <rect x="440" y="710" width="120" height="120" rx="15"/>
+    <rect x="610" y="710" width="120" height="120" rx="15"/>
+    <rect x="780" y="710" width="120" height="120" rx="15"/>
+  </g>
+  <g fill="none" stroke="#8d2b22" stroke-width="16" stroke-linecap="round"
+     stroke-linejoin="round">
+    <path d="M 125 618 L 149 646 L 195 590"/>
+    <path d="M 295 618 L 319 646 L 365 590"/>
+    <path d="M 465 618 L 489 646 L 535 590"/>
+    <path d="M 635 618 L 659 646 L 705 590"/>
+    <path d="M 805 618 L 829 646 L 875 590"/>
+    <path d="M 125 768 L 149 796 L 195 740"/>
+    <path d="M 295 768 L 319 796 L 365 740"/>
+    <path d="M 465 768 L 489 796 L 535 740"/>
+    <path d="M 635 768 L 659 796 L 705 740"/>
+    <path d="M 805 768 L 829 796 L 875 740"/>
+  </g>
+</svg>

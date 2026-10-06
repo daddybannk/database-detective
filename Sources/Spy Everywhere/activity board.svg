@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 760" width="560" height="760">
+  <rect width="560" height="760" fill="#f4ecd8"/>
+  <rect x="18" y="18" width="524" height="724" fill="none" stroke="#2b2b2b" stroke-width="4"/>
+
+  <text x="280" y="78" font-family="Georgia, serif" font-size="42" font-weight="bold"
+        fill="#1a1a1a" text-anchor="middle">ACTIVITY BOARD</text>
+  <text x="280" y="112" font-family="Georgia, serif" font-size="19" letter-spacing="2"
+        fill="#4a4a4a" text-anchor="middle">LINDENHALL COMMUNITY HALL</text>
+  <line x1="60" y1="138" x2="500" y2="138" stroke="#8d2b22" stroke-width="3"/>
+
+  <g font-family="Georgia, serif" font-size="23" fill="#1a1a1a">
+    <text x="60" y="196">Chess Club</text>        <text x="500" y="196" text-anchor="end">Monday</text>
+    <text x="60" y="244">Choir</text>             <text x="500" y="244" text-anchor="end">Monday</text>
+    <text x="60" y="292">Debate Society</text>    <text x="500" y="292" text-anchor="end">Tuesday</text>
+    <text x="60" y="340">Film Club</text>         <text x="500" y="340" text-anchor="end">Tuesday</text>
+    <text x="60" y="388">Gardening Circle</text>  <text x="500" y="388" text-anchor="end">Wednesday</text>
+    <text x="60" y="436">Hiking Group</text>      <text x="500" y="436" text-anchor="end">Wednesday</text>
+    <text x="60" y="484">Pottery Studio</text>    <text x="500" y="484" text-anchor="end">Thursday</text>
+    <text x="60" y="532">Robotics Team</text>     <text x="500" y="532" text-anchor="end">Thursday</text>
+    <text x="60" y="580">Swim Squad</text>        <text x="500" y="580" text-anchor="end">Friday</text>
+    <text x="60" y="628">Theatre Troupe</text>    <text x="500" y="628" text-anchor="end">Friday</text>
+  </g>
+
+  <line x1="60" y1="664" x2="500" y2="664" stroke="#2b2b2b" stroke-width="2"/>
+  <text x="280" y="700" font-family="Georgia, serif" font-size="18" letter-spacing="1"
+        fill="#4a4a4a" text-anchor="middle">TWO GROUPS EVERY EVENING</text>
+  <text x="280" y="724" font-family="Georgia, serif" font-size="18" letter-spacing="1"
+        fill="#4a4a4a" text-anchor="middle">FIVE EVENINGS A WEEK</text>
+</svg>

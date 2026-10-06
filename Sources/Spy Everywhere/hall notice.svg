@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="360" viewBox="0 0 700 360">
+  <rect width="700" height="360" fill="#ffffff"/>
+  <rect x="22" y="22" width="656" height="316" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="30" y="30" width="640" height="300" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="350" y="86" font-size="26" font-weight="bold" fill="#1a1a1a">LINDENHALL COMMUNITY HALL</text>
+    <text x="350" y="114" font-size="15" fill="#5c574c">NOTE TO THE CUSTOM CRIMES DIVISION</text>
+  </g>
+  <line x1="70" y1="138" x2="630" y2="138" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- The schedule itself is on the activity board, so this only carries what
+       the board cannot: that somebody is here to watch, and that a renewal
+       files a second sheet. -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1a1a1a">
+    <text x="70" y="186">Somebody joined this hall to watch it, not to take part.</text>
+    <text x="70" y="222">A renewal files a second sheet for the same group.</text>
+    <text x="70" y="274" font-weight="bold">Find the member signed up for every group.</text>
+  </g>
+
+  <text x="70" y="314" font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#5c574c">
+    Committee Secretary
+  </text>
+  <g transform="translate(498,268) rotate(-9)">
+    <rect x="0" y="0" width="128" height="46" rx="5" fill="none" stroke="#8d2b22" stroke-width="3" opacity="0.8"/>
+    <text x="64" y="31" text-anchor="middle" font-family="'Courier New', monospace" font-size="17"
+          font-weight="bold" fill="#8d2b22" opacity="0.85">ALL TEN</text>
+  </g>
+</svg>
