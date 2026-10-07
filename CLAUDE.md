@@ -17,6 +17,7 @@ School Speed Limit/  the same, for the fourth case
 Spy Everywhere/      the same, for the fifth case
 Step Bros/           the same, for the sixth case
 Out of Service/      the same, for the seventh case
+Which Bob/           the same, for the eighth case
 ```
 
 A case is two folders with the same name: `Sources/<case>/` holds the generator, the `build.sh` and the `.svg` sources; `<case>/` at the top level holds only what ships — `config.json`, the database, the PNGs and a `README.md` recording the solution. Both build steps in `Sources/<case>/` write across into `<case>/`.
@@ -53,6 +54,9 @@ python3 "Sources/Step Bros/step_bros.py"   # and for the sixth
 
 python3 "Sources/Out of Service/out_of_service.py" # and for the seventh
 "Sources/Out of Service/build.sh"
+
+python3 "Sources/Which Bob/which_bob.py"   # and for the eighth
+"Sources/Which Bob/build.sh"
 
 python3 dbd-workshop/Scripts/halloween.py  # upstream's example generator; writes into the cwd
 ```
@@ -121,6 +125,14 @@ Two things in it are worth copying into any case that spreads one value across s
 
 - **The column values must be on the evidence, or the case is unplayable.** 1000, 500 and 100 appear nowhere in the database -- a player who never opens the cassette card cannot even write the right expression. Trimming that card would not make the case harder, it would make it impossible, which is the opposite of the trims that improved the artwork on the other cases.
 - **Bracket a composite expression before doing arithmetic on it.** `%` binds tighter than `+` in SQLite, so the integrity check `n1000*1000 + n500*500 + n100*100 % 100 <> 0` silently tests `n100*100 % 100` and flags every row in the table. `verify()` now wraps it. The same trap is waiting in any check that reaches for `%`, `/` or a comparison against a bare sum.
+
+`Sources/Which Bob/which_bob.py` is the case to read before writing a puzzle whose answer is a row that is *missing*. A threatening letter signed "Bob" reaches the station on 7 October; the man was dismissed on 30 September, and 300 officers on the roster are called Bob. Nothing in `officers` says who still works there -- Records never deletes a row -- so the only witness is the staff door scanner, and it identifies him by never having recorded him this month. Every query that reaches for his most recent scan *this month* returns an empty table, which is what forces `GROUP BY o.badge_id HAVING MAX(s.date) < 20261001`. Seven other officers also stopped coming in last month, so dropping the name filter accuses eight; one of the forty Bobbys is among them, so `LIKE 'Bob%'` accuses two; his own last shift was the 30th itself, so `MAX(date) < 20260930` accuses nobody named Bob.
+
+Three things in it are worth copying into any case built on an absence:
+
+- **A case about a missing row needs a story for why the obvious table cannot answer.** A `status` or `dismissed_on` column anywhere in `officers` would end the case in one `WHERE`, so the roster has neither, and the evidence says why: Records has never deleted a row from it. The premise is what makes the absence the only road in.
+- **Every row that could also be missing must be accounted for.** Anybody with no scans at all would be accused alongside the culprit by the `NOT IN` and `LEFT JOIN ... IS NULL` forms, so `duty_days()` forces every officer a scan in September and every serving officer one on or after 2 October. That is what makes all three shapes of the solution agree, and what pins the four Bobs last seen on 1 October at exactly four.
+- **A claim the artwork makes about the culprit has to be pinned, not drawn.** The letter says he gave the station nine years of nights, so his duty block is fixed rather than sampled and `verify()` fails if a scan of his falls outside it. His badge number, rank, division and the time of his last shift are quoted in the case README and pinned the same way.
 
 Three habits in these generators worth keeping in any new one:
 

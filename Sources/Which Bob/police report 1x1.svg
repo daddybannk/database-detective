@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <rect width="1000" height="1000" fill="#ffffff"/>
+  <rect x="40" y="40" width="920" height="920" fill="none" stroke="#2b2b2b" stroke-width="8"/>
+
+  <text x="500" y="196" font-family="Georgia, serif" font-size="96" font-weight="bold"
+        fill="#1a1a1a" text-anchor="middle">WHICH</text>
+  <text x="500" y="310" font-family="Georgia, serif" font-size="96" font-weight="bold"
+        fill="#1a1a1a" text-anchor="middle">BOB?</text>
+  <line x1="220" y1="360" x2="780" y2="360" stroke="#8d2b22" stroke-width="10"/>
+
+  <!-- What the scanner has on him this month. The glyph is U+2639 taken from a
+       monochrome font on purpose: librsvg has no colour-font support, so the
+       Apple Color Emoji face renders as a solid black disc. -->
+  <text x="524" y="870" font-family="Apple Symbols, Helvetica, Arial Unicode MS, sans-serif"
+        font-size="560" fill="#1a1a1a" text-anchor="middle">☹</text>
+
+</svg>

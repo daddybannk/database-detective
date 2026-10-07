@@ -1,0 +1,22 @@
+{
+	"name": "Which Bob?",
+	"author": "daddybannk",
+	"difficulty": "Medium",
+	"concepts": ["JOIN", "GROUP BY", "HAVING", "EXCEPT"],
+	"database": "station_access",
+	"lockedTables": ["officers", "fingerprint_scans"],
+	"evidenceFiles": ["threat letter.png", "station memo.png", "scanner card.png"],
+	"previewImage": "police report 1x1.png",
+	"culpritName": "Bob Leeswagger",
+	"queryHints": [
+		"Four shapes of the query all work.\nJOIN the roster to the scanner log.",
+		"EXCEPT: badges before 20261001,\nminus badges on or after it.",
+		"Or GROUP BY the officer, then\nHAVING MAX(date) < 20261001.",
+		"Or NOT IN, or a LEFT JOIN with\ns.scan_id IS NULL."
+	],
+	"caseHints": [
+		"He has no scan this month at all.\nLook for the gap, not for a row.",
+		"Seven other officers also left last\nmonth. Only one of them is a Bob.",
+		"Forty officers are called Bobby.\nBobby is not Bob."
+	]
+}

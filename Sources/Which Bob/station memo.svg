@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" width="760" height="480">
+  <rect width="760" height="480" fill="#ffffff"/>
+  <rect x="22" y="22" width="716" height="436" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="30" y="30" width="700" height="420" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="380" y="80" font-size="27" font-weight="bold" fill="#1a1a1a">DESK SERGEANT'S NOTE</text>
+    <text x="380" y="110" font-size="15" fill="#5c574c">TO THE CUSTOM CRIMES DIVISION</text>
+  </g>
+  <line x1="70" y1="134" x2="690" y2="134" stroke="#8d2b22" stroke-width="3"/>
+
+  <!-- Trimmed to the six things the case cannot be worked without: today's
+       date, the three hundred Bobs, why the roster cannot narrow them, what
+       the scanner is, where its log starts, and when he was let go. -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1a1a1a">
+    <text x="70" y="176" font-weight="bold">Today is Wednesday 7 October 2026.</text>
+
+    <text x="70" y="220">Three hundred officers on our roster are called Bob.</text>
+
+    <text x="70" y="264">Records has never deleted a row from it: every officer ever sworn</text>
+    <text x="70" y="292">in is still listed, dismissed or not, and nothing says which.</text>
+
+    <text x="70" y="336">The staff door scanner is the only thing that knows who still</text>
+    <text x="70" y="364">comes to work. Its log starts 1 September.</text>
+
+    <text x="70" y="412" font-weight="bold">He was let go last month. Find out which Bob he is.</text>
+  </g>
+</svg>

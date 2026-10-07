@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340">
+  <rect width="640" height="340" fill="#ffffff"/>
+  <rect x="18" y="18" width="604" height="304" fill="none" stroke="#2b2b2b" stroke-width="4"/>
+
+  <text x="320" y="72" font-family="Georgia, serif" font-size="32" font-weight="bold"
+        fill="#1a1a1a" text-anchor="middle">STAFF DOOR SCANNER</text>
+  <text x="320" y="100" font-family="Georgia, serif" font-size="15" letter-spacing="2"
+        fill="#4a4a4a" text-anchor="middle">HOW THE LOG WRITES A SHIFT DOWN</text>
+  <line x1="56" y1="124" x2="584" y2="124" stroke="#8d2b22" stroke-width="3"/>
+
+  <!-- Only the date column is kept: the solution never touches `time`, and the
+       memo's own "today is 7 October" and "the log starts 1 September" already
+       bracket what the column holds. The last line is the one that earns its
+       place: it points at the absence the case turns on. Sans for the
+       figures: Georgia sets numerals as old-style, so half the digits would
+       sit below the line. -->
+  <g font-size="23" fill="#1a1a1a">
+    <text x="56"  y="180" font-family="Helvetica, Arial, sans-serif" font-weight="bold">date</text>
+    <text x="180" y="180" font-family="Helvetica, Arial, sans-serif">20261007</text>
+    <text x="584" y="180" font-family="Georgia, serif" text-anchor="end">7 October 2026</text>
+  </g>
+
+  <line x1="56" y1="218" x2="584" y2="218" stroke="#2b2b2b" stroke-width="2"/>
+  <g font-family="Georgia, serif" font-size="18" fill="#1a1a1a" text-anchor="middle">
+    <text x="320" y="258">One row for each officer, each shift.</text>
+    <text x="320" y="288">No row means nobody came.</text>
+  </g>
+</svg>
