@@ -15,6 +15,7 @@ One Dollar/          the same, for the second case
 Top of the Class/    the same, for the third case
 School Speed Limit/  the same, for the fourth case
 Spy Everywhere/      the same, for the fifth case
+Step Bros/           the same, for the sixth case
 ```
 
 A case is two folders with the same name: `Sources/<case>/` holds the generator, the `build.sh` and the `.svg` sources; `<case>/` at the top level holds only what ships — `config.json`, the database, the PNGs and a `README.md` recording the solution. Both build steps in `Sources/<case>/` write across into `<case>/`.
@@ -45,6 +46,9 @@ python3 "Sources/School Speed Limit/school_speed_limit.py" # and for the fourth
 
 python3 "Sources/Spy Everywhere/spy_everywhere.py" # and for the fifth
 "Sources/Spy Everywhere/build.sh"
+
+python3 "Sources/Step Bros/step_bros.py"   # and for the sixth
+"Sources/Step Bros/build.sh"
 
 python3 dbd-workshop/Scripts/halloween.py  # upstream's example generator; writes into the cwd
 ```
@@ -84,7 +88,7 @@ The important thing to understand before editing a generator is that **the puzzl
 
 Note that the story has to match the data: the registers are $76 **over** overall, because the overpayers more than cover the missing dollar, which is why the evidence is a per-member exception report and not a till reconciliation. Check any figure quoted on evidence artwork against the database before shipping it.
 
-`Sources/Top of the Class/top_of_the_class.py` is the smallest of the five: one forged grade among 450, found by testing each recorded grade against the band its exam score belongs in. Its single trap is the band boundary — twelve scores sit exactly on 80, 70, 60 and 50 and are graded correctly, so `>` instead of `>=` accuses thirteen students, and a `CASE` that forgets the D band accuses 51. `honest_score()` keeps the random scores off those four cut-offs, which is what fixes that count at twelve and lets the evidence artwork quote it.
+`Sources/Top of the Class/top_of_the_class.py` is the smallest of the six: one forged grade among 450, found by testing each recorded grade against the band its exam score belongs in. Its single trap is the band boundary — twelve scores sit exactly on 80, 70, 60 and 50 and are graded correctly, so `>` instead of `>=` accuses thirteen students, and a `CASE` that forgets the D band accuses 51. `honest_score()` keeps the random scores off those four cut-offs, which is what fixes that count at twelve and lets the evidence artwork quote it.
 
 `Sources/School Speed Limit/school_speed_limit.py` is the one case with a trap pointing each way, which is the whole of its difficulty: eight vehicles pass at exactly the 40 km/h zone limit so `speed >= 40` accuses nine drivers, while the culprit crosses the camera at `1500` — the restricted window's own edge — so `time > 1500` accuses nobody at all. A player has to be strict about the speed and inclusive about the time in the same `WHERE` clause. Two more counts punish getting the windows wrong: merging `600-800` and `1500-1700` into one span accuses 18, and rounding the edges outwards accuses 6.
 
@@ -99,6 +103,12 @@ Two things in it are worth copying into any case that counts per group:
 
 - **A second ordering of the data must not give the answer away.** The culprit's eleven sheets would betray them if the draw clustered their dates, so `spread_culprit_dates()` redraws until they span most of the term and are neither the earliest nor the latest sheet on file, and `verify()` asserts both. The same instinct applies to any column a player can sort by.
 - **No group may be thin enough to read the roster.** If one activity had only a handful of members, a player could scroll it instead of counting; `verify()` fails unless the thinnest roster clears 15. Dates are `YYYYMMDD` in an `INTEGER` column for the same reason `time` is HHMM in the case above, and the sign-up desk only opens on weekdays, which `verify()` checks by rebuilding every stamped date with `datetime.date`.
+
+`Sources/Step Bros/step_bros.py` is the case to read before writing a puzzle about a rate or an average, because it is the one that refuses to store one. A walker's pedometer is read at each of eight stages, and a stage whose metres beat its steps was not walked -- a stride never reaches a metre. Steps and metres are both `INTEGER`, the solution compares the two columns directly, and there is no division anywhere: `steps / distance` is a fraction, which `one_dollar.py` already shows this game cannot be trusted with. The trap points each way, as in the case above: the culprit rode one stage and walked the other seven, so `SUM(distance) > SUM(steps)` per walker accuses nobody, while seven walkers with a stage at exactly a metre a stride mean `distance >= steps` accuses eight.
+
+The third count in it is the one worth copying deliberately:
+
+- **A tempting wrong instrument should point at somebody innocent, not at nobody.** Fifteen walkers average fewer steps per metre than the culprit, five of them because they really do stride 90 cm; the lowest average in the race is an innocent walker. A player who sorts by the average arrests the wrong person and finds out they were wrong, which is more instructive than an empty result. `verify()` asserts the culprit is not at the top of that ranking, so a rebuild cannot quietly turn the shortcut into the answer.
 
 Three habits in these generators worth keeping in any new one:
 

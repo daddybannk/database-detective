@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 680" width="560" height="680">
+  <rect width="560" height="680" fill="#ffffff"/>
+  <rect x="18" y="18" width="524" height="644" fill="none" stroke="#2b2b2b" stroke-width="4"/>
+
+  <text x="280" y="78" font-family="Georgia, serif" font-size="42" font-weight="bold"
+        fill="#1a1a1a" text-anchor="middle">THE COURSE</text>
+  <text x="280" y="112" font-family="Georgia, serif" font-size="19" letter-spacing="2"
+        fill="#4a4a4a" text-anchor="middle">EIGHT STAGES &#183; METRES EACH</text>
+  <line x1="60" y1="138" x2="500" y2="138" stroke="#8d2b22" stroke-width="3"/>
+
+  <!-- Sans for the figures: Georgia sets numerals as old-style, so 2400 would
+       read with half its digits below the line. -->
+  <g font-family="Georgia, serif" font-size="23" fill="#1a1a1a">
+    <text x="60" y="196">Mill Bridge</text>    <text x="500" y="196" text-anchor="end" font-family="Helvetica, Arial, sans-serif">2400 m</text>
+    <text x="60" y="244">Hollow Lane</text>    <text x="500" y="244" text-anchor="end" font-family="Helvetica, Arial, sans-serif">3100 m</text>
+    <text x="60" y="292">Beacon Rise</text>    <text x="500" y="292" text-anchor="end" font-family="Helvetica, Arial, sans-serif">1800 m</text>
+    <text x="60" y="340">Fenn Crossing</text>    <text x="500" y="340" text-anchor="end" font-family="Helvetica, Arial, sans-serif">2750 m</text>
+    <text x="60" y="388">Ashdown Ridge</text>    <text x="500" y="388" text-anchor="end" font-family="Helvetica, Arial, sans-serif">3300 m</text>
+    <text x="60" y="436">Water Meadow</text>    <text x="500" y="436" text-anchor="end" font-family="Helvetica, Arial, sans-serif">2100 m</text>
+    <text x="60" y="484">Quarry Track</text>    <text x="500" y="484" text-anchor="end" font-family="Helvetica, Arial, sans-serif">2600 m</text>
+    <text x="60" y="532">Lindenhall Green</text>    <text x="500" y="532" text-anchor="end" font-family="Helvetica, Arial, sans-serif">1950 m</text>
+  </g>
+
+  <line x1="60" y1="584" x2="500" y2="584" stroke="#2b2b2b" stroke-width="2"/>
+  <text x="280" y="624" font-family="Georgia, serif" font-size="20" letter-spacing="1"
+        fill="#4a4a4a" text-anchor="middle">20000 METRES IN ALL</text>
+</svg>

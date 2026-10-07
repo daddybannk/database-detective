@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="660" viewBox="0 0 1000 660">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9dbfd8"/><stop offset="1" stop-color="#dde8ee"/>
+    </linearGradient>
+    <linearGradient id="verge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a9a5e"/><stop offset="1" stop-color="#5d7a46"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="660" fill="url(#sky)"/>
+  <rect y="372" width="1000" height="100" fill="url(#verge)"/>
+  <rect y="452" width="1000" height="154" fill="#4b4f55"/>
+  <rect y="446" width="1000" height="10" fill="#3c4046"/>
+
+  <!-- hedgerow, so the scene reads as a lane and not as a diagram -->
+  <g fill="#4e6b43" opacity="0.8">
+    <ellipse cx="80" cy="360" rx="110" ry="54"/><ellipse cx="240" cy="372" rx="86" ry="40"/>
+    <ellipse cx="900" cy="356" rx="118" ry="58"/><ellipse cx="740" cy="372" rx="80" ry="38"/>
+  </g>
+
+  <!-- a course marker at the verge: the walk came this way -->
+  <rect x="862" y="372" width="12" height="96" fill="#d8d4c8" stroke="#8d8a80" stroke-width="2"/>
+  <rect x="840" y="356" width="56" height="30" rx="4" fill="#8d2b22"/>
+
+  <!-- centre line -->
+  <g fill="#e8e3d4" opacity="0.85">
+    <rect x="40" y="574" width="110" height="9" rx="4"/>
+    <rect x="240" y="574" width="110" height="9" rx="4"/>
+    <rect x="440" y="574" width="110" height="9" rx="4"/>
+    <rect x="640" y="574" width="110" height="9" rx="4"/>
+    <rect x="840" y="574" width="110" height="9" rx="4"/>
+  </g>
+
+  <!-- the scooter, side on, facing right -->
+  <g>
+    <ellipse cx="500" cy="548" rx="200" ry="14" fill="#2b2f34" opacity="0.28"/>
+
+    <circle cx="362" cy="500" r="46" fill="#23262b"/>
+    <circle cx="362" cy="500" r="20" fill="#b9bcc1"/>
+    <circle cx="648" cy="500" r="46" fill="#23262b"/>
+    <circle cx="648" cy="500" r="20" fill="#b9bcc1"/>
+
+    <path fill="#eceef0" stroke="#23262b" stroke-width="5"
+          d="M 332 468 L 430 468 L 470 486 L 592 486 L 616 452 L 664 452
+             L 676 418 L 636 418 L 606 460 L 500 452 L 430 436 L 342 436 Z"/>
+    <rect x="424" y="452" width="184" height="24" rx="10" fill="#23262b"/>
+    <path fill="none" stroke="#23262b" stroke-width="9" stroke-linecap="round"
+          d="M 676 418 L 702 404"/>
+    <path fill="#23262b" d="M 606 462 L 656 462 L 652 486 L 600 486 Z"/>
+  </g>
+
+  <!-- the rider, as a silhouette: no face, no race number -->
+  <g fill="#27303b">
+    <path d="M 536 404 C 556 396 572 408 572 428 L 566 470 L 512 470 L 516 430 Z"/>
+    <path d="M 566 424 L 648 418 L 652 434 L 568 444 Z"/>
+    <path d="M 520 468 L 566 468 L 600 496 L 588 512 L 552 490 L 516 492 Z"/>
+  </g>
+  <g>
+    <circle cx="556" cy="378" r="27" fill="#f2f2f0" stroke="#23262b" stroke-width="4"/>
+    <path d="M 530 372 L 584 372 L 584 362 L 530 364 Z" fill="#8d2b22"/>
+  </g>
+
+  <!-- motion, so the scooter is plainly moving and not parked -->
+  <g stroke="#f0f3f5" stroke-width="7" stroke-linecap="round" opacity="0.75">
+    <line x1="96" y1="446" x2="236" y2="446"/>
+    <line x1="60" y1="480" x2="228" y2="480"/>
+    <line x1="112" y1="514" x2="244" y2="514"/>
+  </g>
+
+  <!-- evidence footer, so the caption survives even a bad print -->
+  <rect y="606" width="1000" height="54" fill="#15181c" opacity="0.9"/>
+  <text x="24" y="629" font-family="'Courier New', monospace" font-size="17" fill="#f0ead9">
+    WITNESS PHOTO / THE LINDENHALL TWENTY / ON THE COURSE
+  </text>
+  <text x="24" y="650" font-family="'Courier New', monospace" font-size="17" fill="#f0ead9">
+    ONE COMPETITOR, ON A SCOOTER, BETWEEN TWO CHECKPOINTS
+  </text>
+</svg>

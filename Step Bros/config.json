@@ -1,0 +1,20 @@
+{
+	"name": "Step Bros",
+	"author": "daddybannk",
+	"difficulty": "Easy",
+	"concepts": ["JOIN", "WHERE"],
+	"database": "long_walk",
+	"lockedTables": ["walkers", "stages", "pedometer"],
+	"evidenceFiles": ["race rules.png", "course card.png", "witness photo.png"],
+	"previewImage": "police report 1x1.png",
+	"culpritName": "Corbin Halstead",
+	"queryHints": [
+		"JOIN each reading to the stage\nit was taken on.",
+		"Compare the stage's metres with\nthe steps taken on it.",
+		"Totals hide it. Look at the\nstages one at a time."
+	],
+	"caseHints": [
+		"A stride over a metre is not\nwalking.",
+		"Seven stages were walked at\nexactly a metre. All cleared."
+	]
+}

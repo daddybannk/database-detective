@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <rect width="1000" height="1000" fill="#ffffff"/>
+  <rect x="40" y="40" width="920" height="920" fill="none" stroke="#2b2b2b" stroke-width="8"/>
+
+  <text x="500" y="200" font-family="Georgia, serif" font-size="104" font-weight="bold"
+        fill="#1a1a1a" text-anchor="middle">STEP BROS</text>
+  <line x1="220" y1="266" x2="780" y2="266" stroke="#8d2b22" stroke-width="10"/>
+  <text x="500" y="334" font-family="Georgia, serif" font-size="34" letter-spacing="4"
+        fill="#4a4a4a" text-anchor="middle">TWENTY KILOMETRES ON FOOT</text>
+
+  <!-- The winner's medal: two ribbon bands crossing above a struck disc. All
+       circles and straight edges, which is what this format draws cleanly. -->
+  <path fill="#2b2b2b" d="M 382 398 L 456 398 L 566 606 L 494 606 Z"/>
+  <path fill="#8d2b22" d="M 544 398 L 618 398 L 506 606 L 434 606 Z"/>
+
+  <circle cx="500" cy="706" r="138" fill="#ffffff" stroke="#2b2b2b" stroke-width="10"/>
+  <circle cx="500" cy="706" r="110" fill="none" stroke="#8d2b22" stroke-width="6"/>
+  <text x="500" y="760" font-family="Helvetica, Arial, sans-serif" font-size="150"
+        font-weight="bold" fill="#1a1a1a" text-anchor="middle">1</text>
+</svg>

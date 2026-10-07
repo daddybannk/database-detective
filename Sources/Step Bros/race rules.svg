@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="334" viewBox="0 0 700 334">
+  <rect width="700" height="334" fill="#ffffff"/>
+  <rect x="22" y="22" width="656" height="290" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="30" y="30" width="640" height="274" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="350" y="86" font-size="26" font-weight="bold" fill="#1a1a1a">THE LINDENHALL TWENTY</text>
+    <text x="350" y="114" font-size="15" fill="#5c574c">NOTE TO THE CUSTOM CRIMES DIVISION</text>
+  </g>
+  <line x1="70" y1="138" x2="630" y2="138" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- The course itself is on the other card. This carries the rule ("at
+       least as many", so a stage walked at exactly a metre a stride is still
+       walking) and the fact that a missing reading proves nothing. -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1a1a1a">
+    <text x="70" y="186">A stage walked takes at least as many steps as it has metres.</text>
+    <text x="70" y="222">Walkers may retire. Not everyone has a reading for every stage.</text>
+    <text x="70" y="276" font-weight="bold">Find the walker who covered more ground than steps.</text>
+  </g>
+
+</svg>
