@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400">
+  <rect width="700" height="400" fill="#ffffff"/>
+  <rect x="22" y="22" width="656" height="356" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+  <rect x="30" y="30" width="640" height="340" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="350" y="92" font-size="28" font-weight="bold" fill="#1a1a1a">OUT OF SERVICE</text>
+    <text x="350" y="122" font-size="15" fill="#5c574c">NOTE TO THE CUSTOM CRIMES DIVISION</text>
+  </g>
+  <line x1="70" y1="146" x2="630" y2="146" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- The fault, stated plainly: the machines checked each withdrawal against a
+       figure that stopped moving, so the overdraw only exists as a total. The
+       balance column is that stale figure, which is what the second line says
+       without saying "GROUP BY". -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#1a1a1a">
+    <text x="70" y="196">The ledger link dropped at 19:41 and returned at midnight.</text>
+    <text x="70" y="232">Every machine kept checking withdrawals against the balance</text>
+    <text x="70" y="262">it had last synced, one transaction at a time.</text>
+    <text x="70" y="298">Nothing dispensed that night was ever added up.</text>
+    <text x="70" y="344" font-weight="bold">Find the customer who took out more than they held.</text>
+  </g>
+</svg>

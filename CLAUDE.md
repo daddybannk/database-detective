@@ -16,6 +16,7 @@ Top of the Class/    the same, for the third case
 School Speed Limit/  the same, for the fourth case
 Spy Everywhere/      the same, for the fifth case
 Step Bros/           the same, for the sixth case
+Out of Service/      the same, for the seventh case
 ```
 
 A case is two folders with the same name: `Sources/<case>/` holds the generator, the `build.sh` and the `.svg` sources; `<case>/` at the top level holds only what ships — `config.json`, the database, the PNGs and a `README.md` recording the solution. Both build steps in `Sources/<case>/` write across into `<case>/`.
@@ -50,6 +51,9 @@ python3 "Sources/Spy Everywhere/spy_everywhere.py" # and for the fifth
 python3 "Sources/Step Bros/step_bros.py"   # and for the sixth
 "Sources/Step Bros/build.sh"
 
+python3 "Sources/Out of Service/out_of_service.py" # and for the seventh
+"Sources/Out of Service/build.sh"
+
 python3 dbd-workshop/Scripts/halloween.py  # upstream's example generator; writes into the cwd
 ```
 
@@ -65,6 +69,7 @@ To test a case, copy its folder into the game's data directory (`~/Library/Appli
 - Evidence images: max 1000x1000, max 8 entries. `previewImage` and `arrestWarrant` are **not** bound by that limit — the example case ships them at 2188x2188 and 2550x2188.
 - `queryHints` and `caseHints` do not wrap. Insert literal `\n` to break lines, around 35 characters each.
 - `lockedTables` should list every table the puzzle needs; otherwise players can drop them.
+- **Open question: whether the console accepts `*` in an expression.** `Out of Service` needs `n1000*1000 + n500*500 + n100*100` and `Spy Everywhere` needs `COUNT(DISTINCT ...)`; neither has been tried in the game yet. Both are the first thing to check when either case is next loaded.
 - **The in-game SQL console has no `CASE` expression.** A case has to be solvable with `WHERE`, `AND` and `OR` alone, so a banded comparison is written out one band per branch — see `mismatch_condition()` in `Sources/Top of the Class/top_of_the_class.py`, which builds that string from the scale so `verify()` tests the query a player actually types.
 
 ## How the database generators work
@@ -88,7 +93,7 @@ The important thing to understand before editing a generator is that **the puzzl
 
 Note that the story has to match the data: the registers are $76 **over** overall, because the overpayers more than cover the missing dollar, which is why the evidence is a per-member exception report and not a till reconciliation. Check any figure quoted on evidence artwork against the database before shipping it.
 
-`Sources/Top of the Class/top_of_the_class.py` is the smallest of the six: one forged grade among 450, found by testing each recorded grade against the band its exam score belongs in. Its single trap is the band boundary — twelve scores sit exactly on 80, 70, 60 and 50 and are graded correctly, so `>` instead of `>=` accuses thirteen students, and a `CASE` that forgets the D band accuses 51. `honest_score()` keeps the random scores off those four cut-offs, which is what fixes that count at twelve and lets the evidence artwork quote it.
+`Sources/Top of the Class/top_of_the_class.py` is the smallest of the seven: one forged grade among 450, found by testing each recorded grade against the band its exam score belongs in. Its single trap is the band boundary — twelve scores sit exactly on 80, 70, 60 and 50 and are graded correctly, so `>` instead of `>=` accuses thirteen students, and a `CASE` that forgets the D band accuses 51. `honest_score()` keeps the random scores off those four cut-offs, which is what fixes that count at twelve and lets the evidence artwork quote it.
 
 `Sources/School Speed Limit/school_speed_limit.py` is the one case with a trap pointing each way, which is the whole of its difficulty: eight vehicles pass at exactly the 40 km/h zone limit so `speed >= 40` accuses nine drivers, while the culprit crosses the camera at `1500` — the restricted window's own edge — so `time > 1500` accuses nobody at all. A player has to be strict about the speed and inclusive about the time in the same `WHERE` clause. Two more counts punish getting the windows wrong: merging `600-800` and `1500-1700` into one span accuses 18, and rounding the edges outwards accuses 6.
 
@@ -109,6 +114,13 @@ Two things in it are worth copying into any case that counts per group:
 The third count in it is the one worth copying deliberately:
 
 - **A tempting wrong instrument should point at somebody innocent, not at nobody.** Fifteen walkers average fewer steps per metre than the culprit, five of them because they really do stride 90 cm; the lowest average in the race is an innocent walker. A player who sorts by the average arrests the wrong person and finds out they were wrong, which is more instructive than an empty result. `verify()` asserts the culprit is not at the top of that ranking, so a rebuild cannot quietly turn the shortcut into the answer.
+
+`Sources/Out of Service/out_of_service.py` is the case to read before writing a puzzle whose answer is a total rather than a row. An ATM network lost its link to the ledger and every machine went on checking withdrawals against the balance it had last synced, one transaction at a time, so the one customer who overdrew never did it in a single go. A withdrawal is stored the way the machine counts it out -- one column per note, `n1000`, `n500`, `n100` -- and `build_withdrawals()` asserts that no single transaction exceeds the balance it was checked against, which is what makes `WHERE n1000*1000 + ... > balance` return an empty table. The overdraw exists only as a `SUM`, and that is the whole lesson of the case: the data itself refuses to answer the per-row question. Seven accounts emptied to exactly zero make `>=` accuse eight, and the culprit's $270 of overdraw is smaller than both their hundreds and their five hundreds, so dropping either cassette from the sum accuses nobody.
+
+Two things in it are worth copying into any case that spreads one value across several columns:
+
+- **The column values must be on the evidence, or the case is unplayable.** 1000, 500 and 100 appear nowhere in the database -- a player who never opens the cassette card cannot even write the right expression. Trimming that card would not make the case harder, it would make it impossible, which is the opposite of the trims that improved the artwork on the other cases.
+- **Bracket a composite expression before doing arithmetic on it.** `%` binds tighter than `+` in SQLite, so the integrity check `n1000*1000 + n500*500 + n100*100 % 100 <> 0` silently tests `n100*100 % 100` and flags every row in the table. `verify()` now wraps it. The same trap is waiting in any check that reaches for `%`, `/` or a comparison against a bare sum.
 
 Three habits in these generators worth keeping in any new one:
 

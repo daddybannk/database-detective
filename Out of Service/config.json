@@ -1,0 +1,20 @@
+{
+	"name": "Out of Service",
+	"author": "daddybannk",
+	"difficulty": "Easy",
+	"concepts": ["JOIN", "GROUP BY", "HAVING", "SUM"],
+	"database": "atm_network",
+	"lockedTables": ["accounts", "machines", "withdrawals"],
+	"evidenceFiles": ["outage notice.png", "machine card.png"],
+	"previewImage": "police report 1x1.png",
+	"culpritName": "Edric Pennal",
+	"queryHints": [
+		"A column counts notes, not dollars.\nValue them: n1000*1000 + ...",
+		"GROUP BY the account, then SUM\nthe value of each withdrawal.",
+		"Compare that total to balance.\nHAVING filters on the total."
+	],
+	"caseHints": [
+		"No single withdrawal beat the\nbalance it was checked against.",
+		"Seven accounts came out at\nexactly zero. Those are legal."
+	]
+}
