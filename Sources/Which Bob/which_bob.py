@@ -112,8 +112,15 @@ OFFICER_COUNT = BOB_COUNT + NEAR_MISS_COUNT + OTHER_COUNT
 # Badge and scan numbers. Neither carries information -- a badge number says
 # nothing about when its holder was sworn in, a scan number nothing beyond the
 # order of the log -- so sorting by either teaches a player nothing.
+#
+# Six digits, not ten: the game reads an INTEGER column as a signed 32-bit int,
+# so anything past INT32_MAX fails to load with "Value was either too large or
+# too small for an Int32". Ten-digit scan numbers ran to 9,995,691,888 and broke
+# the case in game. Six digits leaves 900,000 numbers for 5,773 scans, which is
+# room enough, and verify() holds every id under the ceiling as well.
 BADGE_DIGITS = 5
-SCAN_DIGITS = 10
+SCAN_DIGITS = 6
+INT32_MAX = 2147483647
 
 RANKS = ("Officer", "Officer", "Officer", "Senior Officer", "Corporal",
          "Sergeant", "Detective", "Lieutenant")
@@ -704,6 +711,14 @@ def verify(connection: sqlite3.Connection) -> None:
         require(
             count(connection, f"SELECT COUNT(DISTINCT {column}) FROM {table}") == rows,
             f"{table}.{column} is not unique",
+        )
+        # The game loads an INTEGER column into an Int32, so an id past the
+        # ceiling is not a cosmetic problem -- the case refuses to open.
+        require(
+            count(connection, f"SELECT COUNT(*) FROM {table} "
+                              f"WHERE {column} > {INT32_MAX}") == 0,
+            f"a {table}.{column} is larger than Int32 can hold, "
+            f"which stops the game loading the case",
         )
     require(
         count(connection, "SELECT COUNT(DISTINCT first_name || ' ' || last_name)"
