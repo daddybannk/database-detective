@@ -71,9 +71,16 @@ ACCOUNT_COUNT = 60
 # no information -- an account number says nothing about its balance and a
 # reference number says nothing about the amount -- so a player sorting by
 # either learns nothing from them.
+# Eight digits for a reference number, not twelve: the game reads an INTEGER
+# column into a signed 32-bit int, so anything past INT32_MAX fails to load
+# with "Value was either too large or too small for an Int32". Twelve-digit
+# reference numbers ran to 988,168,933,048, which no console could open. Eight
+# is the widest that stays clear of the ceiling and still cannot be mistaken
+# for a six-digit account number.
 ACCOUNT_ID_DIGITS = 6
 MACHINE_ID_DIGITS = 4
-WITHDRAWAL_ID_DIGITS = 12
+WITHDRAWAL_ID_DIGITS = 8
+INT32_MAX = 2147483647
 
 # The three cassettes every machine on the network is loaded with, and the most
 # it will count out in one transaction. Both are printed on the evidence, and
@@ -713,6 +720,14 @@ def verify(connection: sqlite3.Connection) -> None:
         require(
             count(connection, f"SELECT COUNT(DISTINCT {column}) FROM {table}") == rows,
             f"{table}.{column} is not unique",
+        )
+        # The game loads an INTEGER column into an Int32, so an id past the
+        # ceiling is not a cosmetic problem -- the case refuses to open.
+        require(
+            count(connection, f"SELECT COUNT(*) FROM {table} "
+                              f"WHERE {column} > {INT32_MAX}") == 0,
+            f"a {table}.{column} is larger than Int32 can hold, "
+            f"which stops the game loading the case",
         )
 
     print(f"Wrote {DATABASE_PATH}")
