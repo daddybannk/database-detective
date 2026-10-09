@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 546" width="700" height="546">
+  <rect width="700" height="546" fill="#ffffff"/>
+  <rect x="20" y="20" width="660" height="506" fill="none" stroke="#2b2b2b" stroke-width="3"/>
+
+  <!-- Ten years in a drawer: the sheet is the oldest thing in the case, which
+       is the point of the note at the foot of it. -->
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="350" y="74" font-size="17" letter-spacing="3" fill="#4a4a4a">MINISTRY OF JUSTICE</text>
+    <text x="350" y="118" font-size="33" font-weight="bold" fill="#1a1a1a">STANDING WARRANT</text>
+    <text x="350" y="148" font-size="16" letter-spacing="2" fill="#8d2b22">TEN YEARS AT LARGE</text>
+  </g>
+  <line x1="60" y1="172" x2="640" y2="172" stroke="#8d2b22" stroke-width="3"/>
+
+  <text x="350" y="242" font-family="'Courier New', Courier, monospace" font-size="42"
+        font-weight="bold" fill="#1a1a1a" text-anchor="middle" letter-spacing="2">ALLISON BURGERS</text>
+
+  <!-- Two facts and a note, which is all the file is good for. A date of
+       birth sat here as a trap until it was cut: the clerk's note that his
+       papers lie had to sit two inches under it to be fair, which defused the
+       trap on the same sheet of paper. It only ever caught skimming. -->
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#1a1a1a">
+    <text x="92" y="310" fill="#5c574c">Former rank</text>
+    <text x="310" y="310" font-weight="bold">General of the Army</text>
+    <text x="92" y="352" fill="#5c574c">Fled the capital</text>
+    <text x="310" y="352" font-weight="bold">Autumn 2016</text>
+  </g>
+
+  <line x1="92" y1="390" x2="608" y2="390" stroke="#c4c4c4" stroke-width="2"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif" font-size="18" fill="#1a1a1a">
+    <text x="92" y="430" font-weight="bold">NOTE FROM THE FILE CLERK</text>
+    <text x="92" y="466">He has filed a change of name with the civil registry</text>
+    <text x="92" y="494">in every one of the years since 2017.</text>
+  </g>
+</svg>

@@ -18,6 +18,7 @@ Spy Everywhere/      the same, for the fifth case
 Step Bros/           the same, for the sixth case
 Out of Service/      the same, for the seventh case
 Which Bob/           the same, for the eighth case
+What is your real name/  the same, for the ninth case
 ```
 
 A case is two folders with the same name: `Sources/<case>/` holds the generator, the `build.sh` and the `.svg` sources; `<case>/` at the top level holds only what ships — `config.json`, the database, the PNGs and a `README.md` recording the solution. Both build steps in `Sources/<case>/` write across into `<case>/`.
@@ -27,6 +28,8 @@ A case is two folders with the same name: `Sources/<case>/` holds the generator,
 The unit of work is a **case folder**: a `config.json` plus a SQLite database file and media assets, all siblings in one directory. The game loads that folder; nothing is compiled or packaged.
 
 ## Commands
+
+A house-style trap in the artwork: these files use `--` as a dash in prose comments, which is legal in Python and **illegal inside an XML comment** — `rsvg-convert` refuses the whole file with "Double hyphen within comment". Use `:` or a single dash in `.svg` comments.
 
 No build, test, or lint setup and no dependencies — Python standard library only, plus `rsvg-convert` (`brew install librsvg`) for artwork. Run from the repository root:
 
@@ -58,6 +61,9 @@ python3 "Sources/Out of Service/out_of_service.py" # and for the seventh
 python3 "Sources/Which Bob/which_bob.py"   # and for the eighth
 "Sources/Which Bob/build.sh"
 
+python3 "Sources/What is your real name/what_is_your_real_name.py" # and for the ninth
+"Sources/What is your real name/build.sh"
+
 python3 dbd-workshop/Scripts/halloween.py  # upstream's example generator; writes into the cwd
 ```
 
@@ -74,7 +80,8 @@ To test a case, copy its folder into the game's data directory (`~/Library/Appli
 - `queryHints` and `caseHints` do not wrap. Insert literal `\n` to break lines, around 35 characters each.
 - `lockedTables` should list every table the puzzle needs; otherwise players can drop them.
 - **An `INTEGER` column is read into an Int32, so no value may exceed 2,147,483,647.** A larger one does not merely display oddly: the case fails to load with "Value was either too large or too small for an Int32". `Which Bob` shipped ten-digit `scan_id`s running to 9,995,691,888 and was unplayable until they were redrawn at six digits; its `verify()` now asserts the ceiling. Any generated id, date or amount has to stay under it; `Out of Service` had the same bug in its twelve-digit `withdrawal_id`s and was redrawn at eight. Both generators now assert the ceiling in `verify()`, and a new case should copy that check.
-- **Open question: whether the console accepts `*` in an expression.** `Out of Service` needs `n1000*1000 + n500*500 + n100*100` and `Spy Everywhere` needs `COUNT(DISTINCT ...)`; neither has been tried in the game yet. Both are the first thing to check when either case is next loaded.
+- **Open questions about what the console accepts.** `Out of Service` needs `n1000*1000 + n500*500 + n100*100`, `Spy Everywhere` needs `COUNT(DISTINCT ...)`, and `What is your real name` needs a ten-way self join with ten table aliases; none has been tried in the game yet. All three are the first thing to check when those cases are next loaded. `What is your real name` is the one that survives a negative answer: its chain can also be walked with ten separate one-table queries, which is why its years are written out as literals (`c2.year = 2018`) rather than as `c1.year + 1` — arithmetic inside an expression is untested too, and a case should not depend on two unknowns at once.
+- **The arrest form takes a name of at most 17 characters.** `What is your real name` had to drop the figures from its culprit's `Max Imumoccupancy120` to fit. This is a limit on `culpritName`, not on the data: `get_random_name()` routinely produces longer ones (`Dominga Hollingsworth` is 21) and they sit in the tables untouched.
 - **The in-game SQL console has no `CASE` expression.** A case has to be solvable with `WHERE`, `AND` and `OR` alone, so a banded comparison is written out one band per branch — see `mismatch_condition()` in `Sources/Top of the Class/top_of_the_class.py`, which builds that string from the scale so `verify()` tests the query a player actually types.
 
 ## How the database generators work
@@ -98,7 +105,7 @@ The important thing to understand before editing a generator is that **the puzzl
 
 Note that the story has to match the data: the registers are $76 **over** overall, because the overpayers more than cover the missing dollar, which is why the evidence is a per-member exception report and not a till reconciliation. Check any figure quoted on evidence artwork against the database before shipping it.
 
-`Sources/Top of the Class/top_of_the_class.py` is the smallest of the seven: one forged grade among 450, found by testing each recorded grade against the band its exam score belongs in. Its single trap is the band boundary — twelve scores sit exactly on 80, 70, 60 and 50 and are graded correctly, so `>` instead of `>=` accuses thirteen students, and a `CASE` that forgets the D band accuses 51. `honest_score()` keeps the random scores off those four cut-offs, which is what fixes that count at twelve and lets the evidence artwork quote it.
+`Sources/Top of the Class/top_of_the_class.py` is the smallest of them: one forged grade among 450, found by testing each recorded grade against the band its exam score belongs in. Its single trap is the band boundary — twelve scores sit exactly on 80, 70, 60 and 50 and are graded correctly, so `>` instead of `>=` accuses thirteen students, and a `CASE` that forgets the D band accuses 51. `honest_score()` keeps the random scores off those four cut-offs, which is what fixes that count at twelve and lets the evidence artwork quote it.
 
 `Sources/School Speed Limit/school_speed_limit.py` is the one case with a trap pointing each way, which is the whole of its difficulty: eight vehicles pass at exactly the 40 km/h zone limit so `speed >= 40` accuses nine drivers, while the culprit crosses the camera at `1500` — the restricted window's own edge — so `time > 1500` accuses nobody at all. A player has to be strict about the speed and inclusive about the time in the same `WHERE` clause. Two more counts punish getting the windows wrong: merging `600-800` and `1500-1700` into one span accuses 18, and rounding the edges outwards accuses 6.
 
@@ -134,6 +141,14 @@ Three things in it are worth copying into any case built on an absence:
 - **A case about a missing row needs a story for why the obvious table cannot answer.** A `status` or `dismissed_on` column anywhere in `officers` would end the case in one `WHERE`, so the roster has neither, and the evidence says why: Records has never deleted a row from it. The premise is what makes the absence the only road in.
 - **Every row that could also be missing must be accounted for.** Anybody with no scans at all would be accused alongside the culprit by the `NOT IN` and `LEFT JOIN ... IS NULL` forms, so `duty_days()` forces every officer a scan in September and every serving officer one on or after 2 October. That is what makes all three shapes of the solution agree, and what pins the four Bobs last seen on 1 October at exactly four.
 - **A claim the artwork makes about the culprit has to be pinned, not drawn.** The letter says he gave the station nine years of nights, so his duty block is fixed rather than sampled and `verify()` fails if a scan of his falls outside it. His badge number, rank, division and the time of his last shift are quoted in the case README and pinned the same way.
+
+`Sources/What is your real name/what_is_your_real_name.py` is the case to read before writing a puzzle whose answer is reached by walking rather than by filtering. A fugitive general has filed a change of name in every one of the ten years he has been hiding, and the civil registry stores the chain in the only shape that makes it a puzzle: `name_changes` holds `old_name`, `new_name` and `year` and **no person number at all**, while `residents` holds one row per person under their current name and nothing else -- the clerk types each new name over the old one. A name somebody has given up therefore exists only in the log, which is why `WHERE name = 'Allison Burgers'` returns nothing and why the ten steps from the wanted file to `Max Imumoccupancy` can only be taken one year at a time.
+
+Three things in it are worth copying into any case built on a chain:
+
+- **A chain needs a rule that keeps it single-file, and the data has to test that rule.** Three names on the chain were also taken by somebody else, so `old_name = X` alone returns two rows at those steps and only `AND year = <the very next year>` picks his. The sharpest of the three is the last: his name after 2024 has an onward change in 2026 as well as his own in 2025, so a player who assumes the final change must be the one stamped in the current year arrests `Owt Tolunch`. Every wrong branch ends at a living resident rather than at an empty table -- the `Step Bros` habit, applied to each step instead of once.
+- **Give the structural shortcut a second answer rather than no answer.** Strip the starting name out of the ten-way join and ask which chain runs through all ten years, and a second man comes back who renamed himself every year from a different name. That is what makes the wanted file's name load bearing instead of decorative, and it is the same job the forty Bobbys do in `Which Bob`.
+- **If the culprit's name is conspicuous, the column has to be full of conspicuous names.** His current name is read off a lift placard, so twelve other residents answer to something equally daft and forty-five sign names appear in the log. Nothing says which names are daft, so the crowd is the whole of the fairness. The same question came up over the protester who held the wanted name between 2019 and 2021, and the answer there went the other way: an evidence card explaining him looked load bearing, but it is not, because the warrant's *every year since 2017* already excludes his chain -- he never renamed himself two years running. **A rule stated on the evidence disambiguates every branch it covers, so flavour that merely explains a branch is trimmable; check which one a card is before defending it.** A third card went the same way: one explaining that `residents` keeps only the current name, which the schema plus `WHERE name = '<the wanted name>'` returning nothing already tells a player. **Before writing a card, run the query a player would run: self-documenting column names (`old_name`, `new_name`, `year`) and one empty result can carry a premise that looks like it needs prose.** `Out of Service` is the counter-case and the test to apply -- its cassette card survives because 1000, 500 and 100 appear nowhere in its data, so no query can reach them. This case ships two pieces of evidence.
 
 Three habits in these generators worth keeping in any new one:
 

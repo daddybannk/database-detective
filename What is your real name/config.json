@@ -1,0 +1,23 @@
+{
+	"name": "What is your real name?",
+	"author": "daddybannk",
+	"difficulty": "Medium",
+	"concepts": ["JOIN", "Self JOIN", "WHERE"],
+	"database": "civil_registry",
+	"lockedTables": ["residents", "name_changes"],
+	"evidenceFiles": ["wanted file.png", "tip-off note.png"],
+	"previewImage": "police report 1x1.png",
+	"culpritName": "Max Imumoccupancy",
+	"queryHints": [
+		"One step is one row: old_name plus\nthe year gives you the next name.",
+		"Walk it ten times, 2017 to 2026,\nor JOIN name_changes to itself ten\ntimes and let the years do the work.",
+		"Write the years out as numbers.\nc2.year = 2018, not c1.year + 1.",
+		"The last name is the only one of\nthe ten that is in residents."
+	],
+	"caseHints": [
+		"Start at Allison Burgers in 2017.\nThat row is not the only one.",
+		"He changed his name EVERY year.\nEach step is the very next year.",
+		"Three names on the chain were taken\nby somebody else as well. Only the\nnext year's row is his.",
+		"The daft name is not his alone.\nTwelve other residents answer to one."
+	]
+}
