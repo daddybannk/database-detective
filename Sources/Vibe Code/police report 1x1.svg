@@ -1,0 +1,27 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <rect width="1000" height="1000" fill="#ffffff"/>
+  <rect x="40" y="40" width="920" height="920"
+        fill="none" stroke="#2b2b2b" stroke-width="8"/>
+
+  <text x="500" y="340"
+        font-family="Georgia, serif"
+        font-size="112"
+        font-weight="bold"
+        fill="#1a1a1a"
+        text-anchor="middle">VIBE CODE</text>
+
+  <line x1="230" y1="410" x2="770" y2="410"
+        stroke="#8d2b22" stroke-width="10"/>
+
+  <text x="500" y="474"
+        font-family="Georgia, serif"
+        font-size="44"
+        fill="#8d2b22"
+        text-anchor="middle">ONE TABLE LEFT</text>
+
+  <text x="500" y="740"
+        font-family="'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif"
+        font-size="190"
+        text-anchor="middle">👉👈</text>
+</svg>

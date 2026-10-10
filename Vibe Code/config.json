@@ -1,0 +1,23 @@
+{
+	"name": "Vibe Code",
+	"author": "daddybannk",
+	"difficulty": "Medium",
+	"concepts": ["Self JOIN", "WHERE", "AND"],
+	"database": "hr_system",
+	"lockedTables": ["employees"],
+	"evidenceFiles": ["incident report.png", "chat log.png"],
+	"previewImage": "police report 1x1.png",
+	"culpritName": "Cole Finley",
+	"queryHints": [
+		"One row holds one property. Two\nANDs on the same row match nothing.",
+		"Join employees to itself on emp_no,\none alias for each property.",
+		"Name every emp_property in the\nWHERE, then its value beside it.",
+		"Five aliases: two to read the name,\nthree to carry the clues."
+	],
+	"caseHints": [
+		"Only employees survived. All three\nfacts you need are in it.",
+		"Department IT. Role Junior. And he\nstarted the day before the crash.",
+		"The log is stamped 9 October and he\ncalls it his second day.",
+		"Junior is a role in the system.\nThe intern is not the junior."
+	]
+}

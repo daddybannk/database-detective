@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 480" width="540" height="480">
+  <rect width="540" height="480" fill="#ffffff"/>
+  <rect x="20" y="20" width="500" height="440" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+
+  <g font-family="Georgia, 'Times New Roman', serif">
+    <text x="56" y="76" font-size="26" font-weight="bold" fill="#1a1a1a">#it-ops</text>
+    <text x="484" y="76" font-size="15" letter-spacing="1" fill="#5c574c"
+          text-anchor="end">9 OCTOBER 2026</text>
+  </g>
+  <line x1="56" y1="100" x2="484" y2="100" stroke="#8d2b22" stroke-width="3"/>
+
+  <!-- The whole of this card is the date in the corner and the line at 18:49.
+       Between them they say that the man had started the day before, and
+       nothing else: no department, no role, no count of anything.
+
+       The log carries no names at all, which is the premise that makes the
+       database necessary. Nothing says so in prose: a log of six lines with a
+       time against each and nobody against any of them says it by itself.
+
+       Every line signs off with an emoji and the two speakers run opposite
+       arcs: the new starter opens cocky, stays casual, and ends on 👉👈,
+       while the on call engineer goes from puzzled to horrified. The clue
+       line is the new starter's own, which is why it ends on the skull rather
+       than the fingers. Nothing in the case turns on any of them, so they can
+       be swapped without touching the clue. -->
+  <g font-family="'Courier New', Courier, monospace" font-size="19">
+    <g fill="#5c574c">
+      <text x="56" y="152">18:41</text>
+      <text x="56" y="204">18:43</text>
+      <text x="56" y="256">18:46</text>
+      <text x="56" y="308">18:47</text>
+      <text x="56" y="360">18:49</text>
+      <text x="56" y="412">18:52</text>
+    </g>
+
+    <g fill="#1a1a1a">
+      <text x="158" y="152">pushed the migration <tspan font-size="21">&#128526;</tspan></text>
+      <text x="158" y="204">ai said it was safe <tspan font-size="21">&#128076;</tspan></text>
+      <text x="158" y="256">what migration <tspan font-size="21">&#129320;</tspan></text>
+      <text x="158" y="308">WHY IS PRODUCTION EMPTY <tspan font-size="21">&#128561;</tspan></text>
+      <text x="158" y="360" font-weight="bold">IT IS MY SECOND DAY <tspan font-size="21">&#128128;</tspan></text>
+      <text x="158" y="412" font-size="21">&#128073;&#128072;</text>
+    </g>
+  </g>
+</svg>
